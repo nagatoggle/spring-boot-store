@@ -1,0 +1,14 @@
+package com.codewithmosh.store.users;
+
+import org.mapstruct.Mapper;
+import org.mapstruct.MappingTarget;
+
+@Mapper(componentModel = "spring")
+public interface UserMapper {
+    UserDto toDto(User user);
+    User toEntity(RegisterUserRequest request);
+
+    // requestの値を､既存のuserオブジェクトに書き込む
+    // MappingTargetは｢この引数を更新する｣ということを指定する
+    void update(UpdateUserRequest request, @MappingTarget User user);
+}
